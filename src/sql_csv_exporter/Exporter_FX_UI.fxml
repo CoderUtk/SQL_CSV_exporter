@@ -42,7 +42,7 @@
             <Separator layoutY="128.0" maxWidth="1.7976931348623157E308" prefHeight="3.0" prefWidth="625.0" />
             <Pane layoutY="211.0" prefHeight="147.0" prefWidth="614.0">
                <children>
-                  <TextArea prefHeight="147.0" prefWidth="625.0" />
+                  <TextArea fx:id="queryText" prefHeight="147.0" prefWidth="625.0" promptText="Enter query here" />
             <Separator maxWidth="1.7976931348623157E308" prefHeight="3.0" prefWidth="614.0" />
                </children>
             </Pane>
