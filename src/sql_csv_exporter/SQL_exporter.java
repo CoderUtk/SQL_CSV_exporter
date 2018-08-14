@@ -20,12 +20,8 @@ import javax.swing.JOptionPane;
 
 public class SQL_exporter extends Connections {
 
-    public SQL_exporter() throws IOException, ClassNotFoundException, SQLException {
-        export();
-    }
-
     public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
-        SQL_exporter sql_exporter = new SQL_exporter();
+        new Exporter_FX_UI().launch_fxml();
     }
     
     public void export() throws ClassNotFoundException, SQLException {
@@ -33,6 +29,7 @@ public class SQL_exporter extends Connections {
         Connection con;
         String connection = "jdbc:oracle:thin:@";
         connection += host + ":" + port + ":" + sid;
+        System.out.println(connection);
         System.out.println("SQL connection: " + connection);
         con = DriverManager.getConnection(connection, username, password);
         Statement statement;

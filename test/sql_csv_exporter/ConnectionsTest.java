@@ -5,7 +5,9 @@
  */
 package sql_csv_exporter;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import org.json.simple.parser.ParseException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -39,27 +41,25 @@ public class ConnectionsTest {
     }
 
     /**
-     * Test of read_connections method, of class Connections.
+     * Test of set_connections method, of class Connections.
      */
     @Test
-    public void testRead_connections() throws Exception {
-        System.out.println("read_connections");
+    public void testSet_connections() throws IOException, FileNotFoundException, ParseException {
+        System.out.println("set_connections");
         Connections instance = new Connections();
-        instance.read_connections();
+        instance.set_connections();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of get_input method, of class Connections.
+     * Test of get_connections method, of class Connections.
      */
     @Test
-    public void testGet_input() throws IOException {
-        System.out.println("get_input");
+    public void testGet_connections() throws IOException, FileNotFoundException, ParseException {
+        System.out.println("get_connections");
         Connections instance = new Connections();
-        instance.get_input();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.get_connections();
     }
     
 }

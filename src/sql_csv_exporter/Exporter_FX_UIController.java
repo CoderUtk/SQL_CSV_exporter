@@ -1,6 +1,11 @@
 package sql_csv_exporter;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,21 +13,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.Separator;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.json.simple.parser.ParseException;
 
-public class Exporter_FX_UIController {
+public class Exporter_FX_UIController{
 
-    public Exporter_FX_UIController(){
-        delimeterChoicebox.setItems(FXCollections.observableArrayList(
-    "New Document", "Open ", 
-    new Separator(), "Save", "Save as")
-);
-    }
+    //Connections connection = new Connections();
+    SQL_exporter sql_exporter = new SQL_exporter();
     FileChooser fileChooser = new FileChooser();
     File selectedFile;
     Stage controllerStage = new Stage();
@@ -60,7 +62,48 @@ public class Exporter_FX_UIController {
     @FXML
     Label selectedFileLabel = new Label();
     @FXML
+    Button exportBtn = new Button();
+    @FXML
     ChoiceBox delimeterChoicebox = new ChoiceBox();
+    @FXML
+    ChoiceBox connectionChoicebox = new ChoiceBox();
+    @FXML
+    TextField connectionName = new TextField();
+    @FXML
+    TextField port = new TextField();
+    @FXML
+    TextField host = new TextField();
+    @FXML
+    TextField sid = new TextField();
+    @FXML
+    TextField username = new TextField();
+    @FXML
+    TextField password = new TextField();
+
+    @FXML
+    public void initialize() {
+        try {
+            sql_exporter.get_connections();
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
+        delimeterChoicebox.setItems(FXCollections.observableArrayList("Comma: , ", "Pipe: | "));
+        delimeterChoicebox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
+                System.out.println(delimeterChoicebox.getItems().get((Integer) number2));
+                sql_exporter.delimeter = (String) delimeterChoicebox.getItems().get((Integer) number2);
+            }
+        });
+        connectionChoicebox.setItems(FXCollections.observableArrayList(sql_exporter.db_names));
+        connectionChoicebox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number number, Number number2) {
+                System.out.println(connectionChoicebox.getItems().get((Integer) number2));
+                sql_exporter.current_db = (String) connectionChoicebox.getItems().get((Integer) number2);
+            }
+        });
+    }
 
     public void open_file_chooser(ActionEvent e) {
         fileChooser.getExtensionFilters().addAll(
@@ -96,6 +139,32 @@ public class Exporter_FX_UIController {
         writeSQLRbtn.setToggleGroup(sqlToggleGroup);
         queryPane.setVisible(true);
         addFilePane.setVisible(false);
+    }
+
+    public void export(ActionEvent e) throws IOException, FileNotFoundException, ParseException {
+        if (addConnectionRbtn.isSelected()) {
+            try {
+                System.out.println(connectionName.getText());
+                sql_exporter.add_connection(connectionName.getText(), host.getText(), port.getText(), sid.getText(), username.getText(), password.getText());
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        }
+        if (selectConnectionRbtn.isSelected()) {
+            sql_exporter.set_connections();
+        }
+        sql_exporter.delimeter = sql_exporter.delimeter.contains("Comma") ? "," : "|";
+        if (writeSQLRbtn.isSelected()) {
+            sql_exporter.query = queryTextArea.getText();
+        }
+        if (addSQLRbtn.isSelected()) {
+            sql_exporter.read_query_from_file(selectedFile);
+        }
+        try {
+            new SQL_exporter().export();
+        } catch (ClassNotFoundException | SQLException sqle) {
+            sqle.printStackTrace();
+        }
     }
 
 }

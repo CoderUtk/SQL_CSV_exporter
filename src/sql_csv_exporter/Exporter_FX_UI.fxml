@@ -22,7 +22,7 @@
             <Pane fx:id="selectConnectionPane" layoutX="3.0" layoutY="88.0" prefHeight="68.0" prefWidth="625.0">
                <children>
                   <Label layoutX="38.0" layoutY="12.0" prefHeight="17.0" prefWidth="114.0" text="Select connection: " />
-                  <ChoiceBox layoutX="216.0" layoutY="8.0" prefHeight="3.0" prefWidth="251.0" />
+                  <ChoiceBox fx:id="connectionChoicebox" layoutX="216.0" layoutY="8.0" prefHeight="3.0" prefWidth="251.0" />
                </children>
             </Pane>
             <Pane layoutX="3.0" layoutY="151.0" prefHeight="40.0" prefWidth="625.0">
@@ -44,23 +44,23 @@
                   <TextArea fx:id="queryText" layoutX="6.0" layoutY="25.0" prefHeight="125.0" prefWidth="625.0" promptText="Enter query here" />
                </children>
             </Pane>
-            <Button layoutX="267.0" layoutY="365.0" mnemonicParsing="false" text="EXPORT" />
+            <Button fx:id="exportBtn" layoutX="267.0" layoutY="365.0" mnemonicParsing="false" onAction="#export" text="EXPORT" />
             <Pane layoutX="6.0" layoutY="191.0" prefHeight="40.0" prefWidth="631.0">
                <children>
                   <RadioButton fx:id="addSQLRbtn" layoutX="34.0" layoutY="12.0" mnemonicParsing="false" onAction="#add_sql_file" prefHeight="17.0" prefWidth="168.0" text="Add SQL file" />
-                  <RadioButton fx:id="writeSQLRbtn" layoutX="334.0" layoutY="12.0" mnemonicParsing="false" onAction="#write_query" prefHeight="17.0" prefWidth="157.0" text="Write Query" />
+                  <RadioButton fx:id="writeSQLRbtn" layoutX="334.0" layoutY="12.0" mnemonicParsing="false" onAction="#write_query" prefHeight="17.0" prefWidth="157.0" selected="true" text="Write Query" />
                   <Separator layoutX="-6.0" layoutY="39.0" maxWidth="1.7976931348623157E308" prefHeight="3.0" prefWidth="637.0" />
                </children>
             </Pane>
       <Separator layoutY="131.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="631.0" />
       <Pane fx:id="addConnectionPane" layoutX="2.0" layoutY="79.0" prefHeight="68.0" prefWidth="625.0" visible="false">
          <children>
-            <TextField layoutX="46.0" layoutY="2.0" promptText="Connection Name" />
-            <TextField layoutX="246.0" layoutY="2.0" promptText="Username" />
-            <PasswordField layoutX="462.0" layoutY="2.0" promptText="Password" />
-            <TextField layoutX="46.0" layoutY="34.0" promptText="Hostname" />
-            <TextField layoutX="246.0" layoutY="34.0" promptText="Port" />
-            <TextField layoutX="462.0" layoutY="34.0" promptText="sid" />
+            <TextField fx:id="connectionName" layoutX="46.0" layoutY="2.0" promptText="Connection Name" />
+            <TextField fx:id="username" layoutX="246.0" layoutY="2.0" promptText="Username" />
+            <PasswordField fx:id="password" layoutX="462.0" layoutY="2.0" promptText="Password" />
+            <TextField fx:id="host" layoutX="46.0" layoutY="34.0" promptText="Hostname" />
+            <TextField fx:id="port" layoutX="246.0" layoutY="34.0" promptText="Port" />
+            <TextField fx:id="sid" layoutX="462.0" layoutY="34.0" promptText="sid" />
          </children>
       </Pane>
       <Pane fx:id="addFilePane" layoutY="231.0" prefHeight="125.0" prefWidth="637.0" visible="false">

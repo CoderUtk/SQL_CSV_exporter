@@ -17,9 +17,8 @@ public class Exporter_FX_UI extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("Exporter_FX_UI.fxml"));
-        Exporter_FX_UIController controller = new Exporter_FX_UIController();
         Scene scene = new Scene(root);
-        primaryStage.setTitle("UTK");
+        primaryStage.setTitle("ORACLE");
         primaryStage.setScene(scene);
         primaryStage.show();;
     }
