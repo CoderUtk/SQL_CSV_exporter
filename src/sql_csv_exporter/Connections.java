@@ -7,23 +7,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class Connections {
+public class Connections extends Exporter_FX_UI{
 
-    public String db_name;
-    String current_db;
-    String[] db_names;
-    public String host;
-    public String sid;
-    public String port;
-    public String username;
-    public String password;
-    public String delimeter;
-    JSONParser parser = new JSONParser();
-    JSONObject json_object;
-    public String query;
+   
 
     public void set_connections() throws FileNotFoundException, IOException, ParseException {
         json_object = (JSONObject) parser.parse(new FileReader("Connections.json"));
@@ -66,6 +54,7 @@ public class Connections {
     }
 
     void read_query_from_file(File file) throws FileNotFoundException, IOException {
+        System.out.println(file.toString());
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line, temp = "";
             while ((line = br.readLine()) != null) {

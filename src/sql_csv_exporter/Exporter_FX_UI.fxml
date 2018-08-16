@@ -41,13 +41,13 @@
             </Pane>
             <Pane fx:id="queryPane" layoutY="211.0" prefHeight="147.0" prefWidth="631.0">
                <children>
-                  <TextArea fx:id="queryText" layoutX="6.0" layoutY="25.0" prefHeight="125.0" prefWidth="625.0" promptText="Enter query here" />
+                  <TextArea fx:id="queryTextArea" layoutX="6.0" layoutY="25.0" prefHeight="125.0" prefWidth="625.0" promptText="Enter query here (End query with ;)" />
                </children>
             </Pane>
-            <Button fx:id="exportBtn" layoutX="267.0" layoutY="365.0" mnemonicParsing="false" onAction="#export" text="EXPORT" />
+            <Button fx:id="exportBtn" layoutX="437.0" layoutY="367.0" mnemonicParsing="false" onAction="#export" prefHeight="25.0" prefWidth="149.0" text="EXPORT" />
             <Pane layoutX="6.0" layoutY="191.0" prefHeight="40.0" prefWidth="631.0">
                <children>
-                  <RadioButton fx:id="addSQLRbtn" layoutX="34.0" layoutY="12.0" mnemonicParsing="false" onAction="#add_sql_file" prefHeight="17.0" prefWidth="168.0" text="Add SQL file" />
+                  <RadioButton fx:id="addSQLRbtn" layoutX="34.0" layoutY="12.0" mnemonicParsing="false" onAction="#add_sql_file" pickOnBounds="false" prefHeight="17.0" prefWidth="168.0" text="Add SQL file" />
                   <RadioButton fx:id="writeSQLRbtn" layoutX="334.0" layoutY="12.0" mnemonicParsing="false" onAction="#write_query" prefHeight="17.0" prefWidth="157.0" selected="true" text="Write Query" />
                   <Separator layoutX="-6.0" layoutY="39.0" maxWidth="1.7976931348623157E308" prefHeight="3.0" prefWidth="637.0" />
                </children>
@@ -70,5 +70,7 @@
             <Button fx:id="sqlBrowseButton" layoutX="49.0" layoutY="50.0" mnemonicParsing="false" onAction="#open_file_chooser" prefHeight="25.0" prefWidth="75.0" text="Browse..." />
          </children>
       </Pane>
+      <TextField fx:id="fileName" layoutX="32.0" layoutY="367.0" prefHeight="25.0" prefWidth="157.0" promptText="Export Name(Optional)" />
+      <Label fx:id="onComplete" layoutX="222.0" layoutY="371.0" prefHeight="17.0" prefWidth="157.0" textAlignment="CENTER" />
          </children>
 </AnchorPane>

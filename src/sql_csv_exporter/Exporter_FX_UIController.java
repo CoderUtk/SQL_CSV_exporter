@@ -79,7 +79,11 @@ public class Exporter_FX_UIController{
     TextField username = new TextField();
     @FXML
     TextField password = new TextField();
-
+    @FXML
+    TextField fileName = new TextField();
+    @FXML
+    Label onComplete = new Label();
+    
     @FXML
     public void initialize() {
         try {
@@ -142,6 +146,7 @@ public class Exporter_FX_UIController{
     }
 
     public void export(ActionEvent e) throws IOException, FileNotFoundException, ParseException {
+        onComplete.setText("");
         if (addConnectionRbtn.isSelected()) {
             try {
                 System.out.println(connectionName.getText());
@@ -156,15 +161,21 @@ public class Exporter_FX_UIController{
         sql_exporter.delimeter = sql_exporter.delimeter.contains("Comma") ? "," : "|";
         if (writeSQLRbtn.isSelected()) {
             sql_exporter.query = queryTextArea.getText();
+            System.out.println(sql_exporter.query);
         }
         if (addSQLRbtn.isSelected()) {
+            System.out.println("dede " + selectedFile.toString());
             sql_exporter.read_query_from_file(selectedFile);
         }
+        if(!fileName.getText().trim().equals(""))
+            sql_exporter.fileName  = fileName.getText();
         try {
-            new SQL_exporter().export();
+            sql_exporter.export();
         } catch (ClassNotFoundException | SQLException sqle) {
             sqle.printStackTrace();
         }
+        if(sql_exporter.isComplete)
+            onComplete.setText("FINISHED !!");
     }
 
 }

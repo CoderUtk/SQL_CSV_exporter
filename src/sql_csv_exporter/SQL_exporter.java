@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package sql_csv_exporter;
 
 import java.io.File;
@@ -20,9 +16,7 @@ import javax.swing.JOptionPane;
 
 public class SQL_exporter extends Connections {
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
-        new Exporter_FX_UI().launch_fxml();
-    }
+
     
     public void export() throws ClassNotFoundException, SQLException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -52,7 +46,7 @@ public class SQL_exporter extends Connections {
                     statement.execute(sqlStatements[i]);
                     rs = statement.getResultSet();
                     ResultSetMetaData rsmd = rs.getMetaData();
-                    String outputCSVfile = "Output/" + "CSV_export" + "_" + formattedDate + ".csv";
+                    String outputCSVfile = "Output/" + fileName + "_" + formattedDate + ".csv";
                     File file = new File(outputCSVfile);
                     FileWriter fwCSV;
                     fwCSV = new FileWriter(file);
@@ -77,7 +71,8 @@ public class SQL_exporter extends Connections {
                     }
                     fwCSV.flush();
                     fwCSV.close();
-                    JOptionPane.showMessageDialog(null,"FINISHED", "SQL CSV EXPORT", JOptionPane.INFORMATION_MESSAGE );
+                    isComplete = true;
+                    //JOptionPane.showMessageDialog(null,"FINISHED", "SQL CSV EXPORT", JOptionPane.INFORMATION_MESSAGE );
                 } else {
                     System.out.println(sqlStatements[i] + "\n");
                     if (rs == null) {
