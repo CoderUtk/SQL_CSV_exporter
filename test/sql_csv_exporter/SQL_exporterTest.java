@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author umagrawal
  */
 public class SQL_exporterTest {
-    
+
     public SQL_exporterTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -60,5 +60,17 @@ public class SQL_exporterTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
+    /**
+     * Test of export_to_excel method, of class SQL_exporter.
+     */
+    @Test
+    public void testExport_to_excel() throws Exception {
+        System.out.println("export_to_excel");
+        SQL_exporter instance = new SQL_exporter();
+        instance.export_to_excel();
+        // TODO review the generated test code and remove the default call to fail.
+        //fail("The test case is a prototype.");
+    }
+
 }
