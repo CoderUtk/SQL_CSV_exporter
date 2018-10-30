@@ -25,34 +25,34 @@
                   <ChoiceBox fx:id="connectionChoicebox" layoutX="216.0" layoutY="8.0" prefHeight="3.0" prefWidth="251.0" />
                </children>
             </Pane>
-            <Pane layoutX="3.0" layoutY="151.0" prefHeight="40.0" prefWidth="625.0">
+            <Pane fx:id="delimeterPane" layoutX="-1.0" layoutY="190.0" prefHeight="47.0" prefWidth="637.0">
                <children>
                   <Label layoutX="38.0" layoutY="12.0" prefHeight="17.0" prefWidth="114.0" text="Choose Delimeter:" />
                   <ChoiceBox fx:id="delimeterChoicebox" layoutX="216.0" layoutY="8.0" prefHeight="3.0" prefWidth="251.0" />
-                  <Separator layoutY="39.0" maxWidth="1.7976931348623157E308" prefHeight="3.0" prefWidth="631.0" />
+                  <Separator layoutY="39.0" maxWidth="1.7976931348623157E308" prefHeight="3.0" prefWidth="639.0" />
                </children>
             </Pane>
             <Pane layoutX="-4.0" layoutY="34.0" prefHeight="40.0" prefWidth="631.0">
                <children>
                   <RadioButton fx:id="selectConnectionRbtn" layoutX="37.0" layoutY="12.0" mnemonicParsing="false" onAction="#select_connection" prefHeight="17.0" prefWidth="168.0" selected="true" text="Select Existing connection" />
                   <RadioButton fx:id="addConnectionRbtn" layoutX="338.0" layoutY="12.0" mnemonicParsing="false" onAction="#add_new_connection" prefHeight="17.0" prefWidth="157.0" text="Add a new connection" />
-                  <Separator layoutX="-2.0" layoutY="39.0" maxWidth="1.7976931348623157E308" prefHeight="3.0" prefWidth="639.0" />
+                  <Separator layoutX="-2.0" layoutY="39.0" maxWidth="1.7976931348623157E308" prefHeight="3.0" prefWidth="647.0" />
                </children>
             </Pane>
-            <Pane fx:id="queryPane" layoutY="211.0" prefHeight="147.0" prefWidth="631.0">
+            <Pane fx:id="queryPane" layoutY="258.0" prefHeight="100.0" prefWidth="639.0">
                <children>
-                  <TextArea fx:id="queryTextArea" layoutX="6.0" layoutY="25.0" prefHeight="125.0" prefWidth="625.0" promptText="Enter query here (End query with ;)" />
+                  <TextArea fx:id="queryTextArea" layoutX="6.0" layoutY="21.0" prefHeight="68.0" prefWidth="625.0" promptText="Enter query here (End query with ;)" />
                </children>
             </Pane>
             <Button fx:id="exportBtn" layoutX="437.0" layoutY="367.0" mnemonicParsing="false" onAction="#export" prefHeight="25.0" prefWidth="149.0" text="EXPORT" />
-            <Pane layoutX="6.0" layoutY="191.0" prefHeight="40.0" prefWidth="631.0">
+            <Pane layoutX="6.0" layoutY="237.0" prefHeight="40.0" prefWidth="631.0">
                <children>
-                  <RadioButton fx:id="addSQLRbtn" layoutX="34.0" layoutY="12.0" mnemonicParsing="false" onAction="#add_sql_file" pickOnBounds="false" prefHeight="17.0" prefWidth="168.0" text="Add SQL file" />
-                  <RadioButton fx:id="writeSQLRbtn" layoutX="334.0" layoutY="12.0" mnemonicParsing="false" onAction="#write_query" prefHeight="17.0" prefWidth="157.0" selected="true" text="Write Query" />
+                  <RadioButton fx:id="addSQLRbtn" layoutX="24.0" layoutY="12.0" mnemonicParsing="false" onAction="#add_sql_file" pickOnBounds="false" prefHeight="17.0" prefWidth="168.0" text="Add SQL file" />
+                  <RadioButton fx:id="writeSQLRbtn" layoutX="325.0" layoutY="12.0" mnemonicParsing="false" onAction="#write_query" prefHeight="17.0" prefWidth="157.0" selected="true" text="Write Query" />
                   <Separator layoutX="-6.0" layoutY="39.0" maxWidth="1.7976931348623157E308" prefHeight="3.0" prefWidth="637.0" />
                </children>
             </Pane>
-      <Separator layoutY="131.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="631.0" />
+      <Separator layoutY="131.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="639.0" />
       <Pane fx:id="addConnectionPane" layoutX="2.0" layoutY="79.0" prefHeight="68.0" prefWidth="625.0" visible="false">
          <children>
             <TextField fx:id="connectionName" layoutX="46.0" layoutY="2.0" promptText="Connection Name" />
@@ -72,5 +72,8 @@
       </Pane>
       <TextField fx:id="fileName" layoutX="32.0" layoutY="367.0" prefHeight="25.0" prefWidth="157.0" promptText="Export Name(Optional)" />
       <Label fx:id="onComplete" layoutX="222.0" layoutY="371.0" prefHeight="17.0" prefWidth="157.0" textAlignment="CENTER" />
+      <RadioButton fx:id="export_to_csv" layoutX="32.0" layoutY="161.0" mnemonicParsing="false" onAction="#export_data_to_csv" text="Export to CSV" />
+      <RadioButton fx:id="export_to_xlsx" layoutX="333.0" layoutY="163.0" mnemonicParsing="false" onAction="#export_data_to_excel" text="Export to xlsx" />
+      <Separator layoutX="-7.0" layoutY="173.0" maxWidth="1.7976931348623157E308" prefHeight="40.0" prefWidth="647.0" />
          </children>
 </AnchorPane>

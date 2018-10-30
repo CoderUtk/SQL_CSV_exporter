@@ -125,7 +125,7 @@ public class SQL_exporter extends Connections {
                     statement.execute(sqlStatements[i]);
                     rs = statement.getResultSet();
                     ResultSetMetaData rsmd = rs.getMetaData();
-                    XSSFSheet spreadsheet = workbook.createSheet("Export " + i);
+                    XSSFSheet spreadsheet = workbook.createSheet("Export " + (i+1));
                     XSSFRow row = spreadsheet.createRow(0);
                     XSSFCell cell;
                     int columnsNumber = rsmd.getColumnCount();
@@ -147,8 +147,11 @@ public class SQL_exporter extends Connections {
                         row_counter++;
                     }
                 }
+                isComplete = true;
             } catch (SQLException e) {
-
+                String error = "\n" + sqlStatements[i] + "\n" + "------------------------------------" + "\n" + e;
+                JOptionPane.showMessageDialog(null, error, "SQL CSV EXPORT", JOptionPane.ERROR_MESSAGE);
+                System.out.println(error);
             }
         }
         workbook.write(out);
